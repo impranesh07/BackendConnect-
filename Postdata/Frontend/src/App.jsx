@@ -6,32 +6,48 @@ const App = () => {
   const [name, setname] = useState('');
   const [sec, setsec] = useState('');
   const [add, setadd] = useState('');
+  const [insert, setinsert] = useState()
+  /* */
+  const [submit, setsubmit] = useState(false)
 
-  const payload = {
+  function handler(e) {
+    e.preventDefault();
+
+    const payload = {
     roll: Number(roll), // Ensures it's an int for Spring Boot
     name: name,
     sec:sec,   // Ensures it's an int for Spring Boot
     add: add
-  };
-  const [submit, setsubmit] = useState(false)
-  function handler(e) {
-    e.preventDefault();
-   // console.log(payload);
-   setsubmit(true);
+    };
+
+   setinsert(payload);
+
+   console.log(payload);
+   
+  setsubmit(true);
+
+   // 4. Clear inputs
+  setdata('');
+  setname('');
+  setsec('');
+  setadd('');
+
+ 
+
   }
   useEffect( ()=>{
-    if (submit) {
+    if (submit && insert) {
       async function senddata() {
     try {
-    const send=await axios.post("http://localhost:9091/data",payload);
-     console.log(send.data);
+    const send=await axios.post("http://localhost:9091/data",insert);
+     //console.log(send.data);
     } catch (error) {
       console.log(error)
     }  }
 
       senddata();
   }
-  },[submit])
+  },[submit,insert])
 
    /*private  int roll;
     private String name;

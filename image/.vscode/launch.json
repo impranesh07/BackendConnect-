@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-DocumentApplication<document>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.example.document.DocumentApplication",
+            "projectName": "document",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}
